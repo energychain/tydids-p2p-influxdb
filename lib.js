@@ -9,7 +9,7 @@ const TydidsP2PInflux = {
     if((typeof tydidsconfig.measurement == 'undefined') || (tydidsconfig.measurement == null)) {
       tydidsconfig.measurement = ssi.identity.address;
     }
-
+    if(typeof tydidsconfig.resubscribe == 'undefined') tydidsconfig.resubscribe = 60000;
     const wrapWrite = async function(data) {
       let iData = {};
 
@@ -23,9 +23,9 @@ const TydidsP2PInflux = {
         }
         return obj;
       }
-      mangelObject(data,'');
 
-      console.log(iData);
+
+      mangelObject(data,'');
 
       influx.writePoints([
         {
@@ -38,14 +38,20 @@ const TydidsP2PInflux = {
       })
     }
 
+    const _subscribe = async function() {
+      ssi.emitter.on('payload:ethr:6226:'+tydidsconfig.presentation,function(data) {
+          wrapWrite(data);
+      });
+      ssi.retrievePresentation(tydidsconfig.presentation);
+    }
+
+    setInterval(_subscribe,tydidsconfig.resubscribe);
+
     let presentation = await ssi.retrievePresentation(tydidsconfig.presentation);
 
-    ssi.emitter.on('payload:ethr:6226:'+tydidsconfig.presentation,function(data) {
-        wrapWrite(data);
-    });
 
     wrapWrite(presentation);
-
+    _subscribe();
   }
 }
 
