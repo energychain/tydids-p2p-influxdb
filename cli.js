@@ -29,7 +29,7 @@ if(typeof options.influxDatabase == 'undefined') options.influxDatabase = 'tydid
 
 if(typeof options.createPrivateKey !== 'undefined') {
   let wallet = lib.ethers.Wallet.createRandom();
-  out(wallet.privateKey);
+  console.log(wallet.privateKey);
   openApp = false;
   if(typeof options.writeTydidsJSON !== 'undefined') {
       let obj = {
