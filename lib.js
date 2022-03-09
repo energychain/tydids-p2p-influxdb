@@ -2,6 +2,7 @@ const TyDIDs = require("tydids-p2p");
 const Influx = require('influx')
 
 const TydidsP2PInflux = {
+  ethers:TyDIDS.ethers,
   run:async function(tydidsconfig,influxconfig) {
     const influx = new Influx.InfluxDB(influxconfig);
     const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,true);
@@ -17,7 +18,7 @@ const TydidsP2PInflux = {
           if(typeof value !== 'object') {
             iData[mstr+key] = value;
           } else {
-            mstr += key;            
+            mstr += key;
             mangelObject(value,mstr);
           }
         }

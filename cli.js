@@ -28,7 +28,7 @@ if(typeof options.influxPort == 'undefined') options.influxPort = 8086;
 if(typeof options.influxDatabase == 'undefined') options.influxDatabase = 'tydids';
 
 if(typeof options.createPrivateKey !== 'undefined') {
-  let wallet = tydids.ethers.Wallet.createRandom();
+  let wallet = lib.ethers.Wallet.createRandom();
   out(wallet.privateKey);
   openApp = false;
   if(typeof options.writeTydidsJSON !== 'undefined') {
