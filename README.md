@@ -16,3 +16,22 @@ Imagine a dataset that is available somewhere in the world might be accessed eve
 - Subscribe to changes with another single line of code
 
 ## This is TyDIDs.
+
+```
+npm install -g tydids-p2p-influxdb
+
+tydids-p2p-influxdb -h
+
+Usage: tydids-influxdb
+
+Options:
+  -priv --privateKey <key>
+  -w --writeTydidsJSON
+  -n --influxHost <hostname>
+  -p --presentation [address]
+  -P --influxPort <port>
+  -d --influxDatabase <name>
+  -m --influxMeasurement <name>
+  --createPrivateKey
+  -h, --help                     display help for command
+```

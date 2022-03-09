@@ -1,6 +1,6 @@
 {
   "name": "tydids-p2p-influxdb",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Verifiable Presentation wrapper decentralized data exchange with TyDIDs and InfluxDB storage.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "url": "git+https://github.com/energychain/tydids-p2p-influxdb.git"
   },
   "bin": {
-    "tydids-influxdb": "./cli.js"
+    "tydids-influxdb": "./cli.js",
+    "tydids-p2p-influxdb": "./cli.js"
   },
   "keywords": [
     "tydids",

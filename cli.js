@@ -9,7 +9,7 @@ const { program } = require('commander');
 program
   .option('-priv --privateKey <key>')
   .option('-w --writeTydidsJSON')
-  .option('-h --influxHost <hostname>')
+  .option('-n --influxHost <hostname>')
   .option('-p --presentation [address]')
   .option('-P --influxPort <port>')
   .option('-d --influxDatabase <name>')

@@ -18,8 +18,7 @@ const TydidsP2PInflux = {
           if(typeof value !== 'object') {
             iData[mstr+key] = value;
           } else {
-            mstr += key;
-            mangelObject(value,mstr);
+            mangelObject(value,mstr+'_'+key);
           }
         }
         return obj;
