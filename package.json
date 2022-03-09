@@ -1,6 +1,6 @@
 {
   "name": "tydids-p2p-influxdb",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Verifiable Presentation wrapper decentralized data exchange with TyDIDs and InfluxDB storage.",
   "main": "index.js",
   "scripts": {

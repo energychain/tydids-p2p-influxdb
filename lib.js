@@ -2,7 +2,7 @@ const TyDIDs = require("tydids-p2p");
 const Influx = require('influx')
 
 const TydidsP2PInflux = {
-  ethers:TyDIDS.ethers,
+  ethers:TyDIDs.ethers,
   run:async function(tydidsconfig,influxconfig) {
     const influx = new Influx.InfluxDB(influxconfig);
     const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,true);
