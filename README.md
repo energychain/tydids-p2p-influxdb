@@ -7,7 +7,7 @@
 [![npm](https://img.shields.io/npm/dt/tydids-p2p-influxdb.svg)](https://www.npmjs.com/package/tydids-p2p-influxdb)
 [![npm](https://img.shields.io/npm/v/tydids-p2p-influxdb.svg)](https://www.npmjs.com/package/tydids-p2p-influxdb)
 [![CO2Offset](https://api.corrently.io/v2.0/ghgmanage/statusimg?host=tydids-p2p-influxdb&svg=1)](https://co2offset.io/badge.html?host=tydids-p2p-influxdb)
-
+[![Join the chat at https://gitter.im/stromdao/tydids-p2p](https://badges.gitter.im/stromdao/tydids-p2p.svg)](https://gitter.im/stromdao/tydids-p2p?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Imagine a dataset that is available somewhere in the world might be accessed everywhere. How? You just need to know its address!
 - Decide who is allowed to see this dataset.
