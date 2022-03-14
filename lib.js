@@ -24,7 +24,6 @@ const TydidsP2PInflux = {
         return obj;
       }
 
-
       mangelObject(data,'');
 
       influx.writePoints([
@@ -36,11 +35,16 @@ const TydidsP2PInflux = {
       ]).catch(err => {
         console.error(`Error saving data to InfluxDB! ${err.stack}`)
       })
+      console.log("Write Porints");
     }
 
     const _subscribe = async function() {
-      ssi.emitter.on('payload:ethr:6226:'+tydidsconfig.presentation,function(data) {
-          wrapWrite(data);
+      ssi.onACK(async function(presentation) {
+          if(presentation.payload._address == tydidsconfig.presentation) {
+              wrapWrite(presentation.payload);
+          }
+
+          return {address:ssi.identity.address,_processor:'tydids-p2p-influx'};
       });
       ssi.retrievePresentation(tydidsconfig.presentation);
     }

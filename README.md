@@ -15,7 +15,7 @@ Imagine a dataset that is available somewhere in the world might be accessed eve
 - Set a value in your dataset with one line of code
 - Subscribe to changes with another single line of code
 
-## This is TyDIDs.
+## This is [TyDIDs](https://github.com/energychain/tydids-p2p).
 
 ```
 npm install -g tydids-p2p-influxdb
