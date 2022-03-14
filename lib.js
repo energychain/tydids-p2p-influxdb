@@ -6,6 +6,7 @@ const TydidsP2PInflux = {
   run:async function(tydidsconfig,influxconfig) {
     const influx = new Influx.InfluxDB(influxconfig);
     const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,true);
+
     if((typeof tydidsconfig.measurement == 'undefined') || (tydidsconfig.measurement == null)) {
       tydidsconfig.measurement = ssi.identity.address;
     }
@@ -49,13 +50,27 @@ const TydidsP2PInflux = {
       ssi.retrievePresentation(tydidsconfig.presentation);
     }
 
-    setInterval(_subscribe,tydidsconfig.resubscribe);
+    const query = async function() {
+        let results = await influx.query(tydidsconfig.query);
+        if(results.length > 0) {
+          const result = results[0];
+          ssi.updatePresentation(result);
+        }
+    }
 
-    let presentation = await ssi.retrievePresentation(tydidsconfig.presentation);
+    if(typeof tydidsconfig.presentation !== 'undefined') {
+      setInterval(_subscribe,tydidsconfig.resubscribe);
+      let presentation = await ssi.retrievePresentation(tydidsconfig.presentation);
 
+      wrapWrite(presentation);
+      _subscribe();
+    }
 
-    wrapWrite(presentation);
-    _subscribe();
+    if(typeof tydidsconfig.query !== 'undefined') {
+      console.log("Presentation:",ssi.identity.address);
+      query();
+      setInterval(query,tydidsconfig.represent);
+    }
   }
 }
 

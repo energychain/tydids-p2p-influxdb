@@ -8,12 +8,13 @@ const { program } = require('commander');
 
 program
   .option('-priv --privateKey <key>')
-  .option('-w --writeTydidsJSON')
   .option('-n --influxHost <hostname>')
   .option('-p --presentation [address]')
   .option('-P --influxPort <port>')
   .option('-d --influxDatabase <name>')
   .option('-m --influxMeasurement <name>')
+  .option('-q --query <influxQuery>')
+  .option('-t --represent <MilliSeconds>')
   .option('--createPrivateKey')
 
 program.parse();
@@ -26,18 +27,19 @@ if(typeof options.privateKey !== 'undefined') { privateKey = options.privateKey}
 if(typeof options.influxHost == 'undefined') options.influxHost = "localhost";
 if(typeof options.influxPort == 'undefined') options.influxPort = 8086;
 if(typeof options.influxDatabase == 'undefined') options.influxDatabase = 'tydids';
+if(typeof options.represent == 'undefined') options.represent = 60000;
 
 if(typeof options.createPrivateKey !== 'undefined') {
   let wallet = lib.ethers.Wallet.createRandom();
   console.log(wallet.privateKey);
   openApp = false;
-  if(typeof options.writeTydidsJSON !== 'undefined') {
-      let obj = {
-        privateKey: wallet.privateKey,
-        address:wallet.address
-      };
-      fs.writeFileSync("./.tydids.json",JSON.stringify(obj));
-  }
+
+  let obj = {
+    privateKey: wallet.privateKey,
+    address:wallet.address
+  };
+  fs.writeFileSync("./.tydids.json",JSON.stringify(obj));
+
 }
 
 
@@ -57,11 +59,13 @@ const app = async function() {
     lib.run({
       privateKey:options.privateKey,
       measurement:options.influxMeasurement,
-      presentation:options.presentation
+      presentation:options.presentation,
+      query:options.query,
+      represent:options.represent
     },{
       host: options.influxHost,
       database: options.influxDatabase,
-      port: options.influxPort * 1,
+      port: options.influxPort * 1
     });
 }
 
