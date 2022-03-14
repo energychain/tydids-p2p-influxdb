@@ -2,7 +2,7 @@
 
 <a href="https://stromdao.de/" target="_blank" title="STROMDAO - Digital Energy Infrastructure"><img src="./static/stromdao.png" align="right" height="85px" hspace="30px" vspace="30px"></a>
 
-**[TyDIDs](https://tydids.com) based P2P Data Identity collector for InfluxDB.**
+**[TyDIDs](https://tydids.com) based P2P Data Identity collector and publisher for InfluxDB.**
 
 [![npm](https://img.shields.io/npm/dt/tydids-p2p-influxdb.svg)](https://www.npmjs.com/package/tydids-p2p-influxdb)
 [![npm](https://img.shields.io/npm/v/tydids-p2p-influxdb.svg)](https://www.npmjs.com/package/tydids-p2p-influxdb)
@@ -26,12 +26,13 @@ Usage: tydids-influxdb
 
 Options:
   -priv --privateKey <key>
-  -w --writeTydidsJSON
   -n --influxHost <hostname>
   -p --presentation [address]
   -P --influxPort <port>
   -d --influxDatabase <name>
   -m --influxMeasurement <name>
+  -q --query <influxQuery>
+  -t --represent <MilliSeconds>
   --createPrivateKey
   -h, --help                     display help for command
 ```
