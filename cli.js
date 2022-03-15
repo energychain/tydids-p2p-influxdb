@@ -15,6 +15,7 @@ program
   .option('-m --influxMeasurement <name>')
   .option('-q --query <influxQuery>')
   .option('-t --represent <MilliSeconds>')
+  .option('-i --identity <address>')
   .option('--createPrivateKey')
 
 program.parse();
@@ -61,7 +62,8 @@ const app = async function() {
       measurement:options.influxMeasurement,
       presentation:options.presentation,
       query:options.query,
-      represent:options.represent
+      represent:options.represent,
+      identity:options.identity
     },{
       host: options.influxHost,
       database: options.influxDatabase,

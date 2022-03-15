@@ -57,6 +57,10 @@ const TydidsP2PInflux = {
           ssi.updatePresentation(result);
         }
     }
+    
+    if(typeof tydidsconfig.identity !== 'undefined') {
+      ssi.setIdentifier(tydidsconfig.identity);
+    }
 
     if(typeof tydidsconfig.presentation !== 'undefined') {
       setInterval(_subscribe,tydidsconfig.resubscribe);
