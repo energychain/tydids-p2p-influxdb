@@ -5,7 +5,7 @@ const TydidsP2PInflux = {
   ethers:TyDIDs.ethers,
   run:async function(tydidsconfig,influxconfig) {
     const influx = new Influx.InfluxDB(influxconfig);
-    const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,true);
+    const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,true,null,tydidsconfig.port);
 
     if((typeof tydidsconfig.measurement == 'undefined') || (tydidsconfig.measurement == null)) {
       tydidsconfig.measurement = ssi.identity.address;
@@ -57,7 +57,7 @@ const TydidsP2PInflux = {
           ssi.updatePresentation(result);
         }
     }
-    
+
     if(typeof tydidsconfig.identity !== 'undefined') {
       ssi.setIdentifier(tydidsconfig.identity);
     }
