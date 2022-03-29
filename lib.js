@@ -15,14 +15,18 @@ const TydidsP2PInflux = {
       let iData = {};
 
       const mangelObject = function(obj,mstr) {
-        for (const [key, value] of Object.entries(obj)) {
-          if(typeof value !== 'object') {
-            iData[mstr+key] = value;
-          } else {
-            mangelObject(value,mstr+'_'+key);
+        if((typeof obj == 'undefined')||(obj == null)) {
+          return obj;
+        } else {
+          for (const [key, value] of Object.entries(obj)) {
+            if(typeof value !== 'object') {
+              iData[mstr+key] = value;
+            } else {
+              mangelObject(value,mstr+'_'+key);
+            }
           }
+          return obj;
         }
-        return obj;
       }
 
       mangelObject(data,'');
