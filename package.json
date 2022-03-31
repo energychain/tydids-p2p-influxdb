@@ -31,6 +31,6 @@
     "commander": "^9.0.0",
     "influx": "^5.9.3",
     "mocha": "^9.2.1",
-    "tydids-p2p": "^1.2.99-build9"
+    "tydids-p2p": "^1.2.99-build11"
   }
 }
