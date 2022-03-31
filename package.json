@@ -1,6 +1,6 @@
 {
   "name": "tydids-p2p-influxdb",
-  "version": "1.2.99",
+  "version": "1.2.99-2",
   "description": "Verifiable Presentation wrapper decentralized data exchange with TyDIDs and InfluxDB storage.",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,6 @@
     "commander": "^9.0.0",
     "influx": "^5.9.3",
     "mocha": "^9.2.1",
-    "tydids-p2p": "^1.2.99-build8"
+    "tydids-p2p": "^1.2.99-build9"
   }
 }
