@@ -16,7 +16,6 @@ program
   .option('-q --query <influxQuery>')
   .option('-t --represent <MilliSeconds>')
   .option('-i --identity <address>')
-  .option('--relay <port>')
   .option('--createPrivateKey')
 
 program.parse();
@@ -64,8 +63,7 @@ const app = async function() {
       presentation:options.presentation,
       query:options.query,
       represent:options.represent,
-      identity:options.identity,
-      port:options.relay
+      identity:options.identity
     },{
       host: options.influxHost,
       database: options.influxDatabase,

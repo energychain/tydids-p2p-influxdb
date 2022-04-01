@@ -5,13 +5,14 @@ const TydidsP2PInflux = {
   ethers:TyDIDs.ethers,
   run:async function(tydidsconfig,influxconfig) {
     const influx = new Influx.InfluxDB(influxconfig);
-    const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,true,null,tydidsconfig.port);
+    const ssi = await TyDIDs.ssi(tydidsconfig.privateKey,tydidsconfig);
 
     if((typeof tydidsconfig.measurement == 'undefined') || (tydidsconfig.measurement == null)) {
       tydidsconfig.measurement = ssi.identity.address;
     }
     if(typeof tydidsconfig.resubscribe == 'undefined') tydidsconfig.resubscribe = 60000;
     const wrapWrite = async function(data) {
+      try {
       let iData = {};
 
       const mangelObject = function(obj,mstr) {
@@ -40,6 +41,9 @@ const TydidsP2PInflux = {
       ]).catch(err => {
         console.error(`Error saving data to InfluxDB! ${err.stack}`)
       })
+    } catch(e) {
+      console.log(e);
+    }
       console.log("Write Porints");
     }
 
